@@ -1,0 +1,25 @@
+{
+  "name": "social-network",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/killbeevol2/social-network.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/killbeevol2/social-network/issues"
+  },
+  "homepage": "https://github.com/killbeevol2/social-network#readme"
+}
