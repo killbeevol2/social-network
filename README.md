@@ -1,138 +1,55 @@
 # social-network
 
-ACCEPTANCE CRITIERA
+## Badges
 
-GIVEN a social network API
-WHEN I enter the command to invoke the application
-THEN my server is started and the Mongoose models are synced to the MongoDB database
-WHEN I open API GET routes in Insomnia Core for users and thoughts
-THEN the data for each of these routes is displayed in a formatted JSON
-WHEN I test API POST, PUT, and DELETE routes in Insomnia Core
-THEN I am able to successfully create, update, and delete users and thoughts in my database
-WHEN I test API POST and DELETE routes in Insomnia Core
-THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list
+![MIT](https://img.shields.io/badge/license-MIT-success)
 
-Getting Started
-Use the following guidelines to set up your models and API routes:
+## Description
 
-Models
-User
+This is an application that has CRUD functionalities but doesn't use MYSQL at all! It's database was created just from MongoDB. So this is just a showcase of how useful MongoDB can be.
 
-username
+## Tools
 
-String
-Unique
-Required
-Trimmed
-email
+- MongoDB : Classified as a NoSQL database program, it usese JSON-like documents with optional schemas.
+- Mongoose : A schema-based solution to model your application data.
+- JavaScript : Used to write the functions.
+- Express : A back end web application framework for Node.js.
+- NPM : An online repository for publishing of open-source Node.js projects.
 
-String
-Required
-Unique
-Must match a valid email address (look into Mongoose's matching validation)
-thoughts
+## Table of Contents
 
-Array of \_id values referencing the Thought model
-friends
+- [Starting](#starting)
+- [Walkthrough Video](#walkthrough)
+- [License](#license)
 
-Array of \_id values referencing the User model (self-reference)
-Schema Settings
+## Starting
 
-Create a virtual called friendCount that retrieves the length of the user's friends array field on query.
+After the application has been downloaded/copied, in your terminal you want to type in `npm i express mongoose` to get the files and get started. You then start the application by typing in `node server.js` into your terminal to get the server started, and you're ready to go.
 
-Thought
+## Walkthrough
 
-thoughtText
+[Walkthrough Video]()
 
-String
-Required
-Must be between 1 and 280 characters
-createdAt
+## License
 
-Date
-Set default value to the current timestamp
-Use a getter method to format the timestamp on query
-username (The user that created this thought)
+#### MIT License
 
-String
-Required
-reactions (These are like replies)
+Copyright (c) 2021 Dyravuth Yorn
 
-Array of nested documents created with the reactionSchema
-Schema Settings
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-Create a virtual called reactionCount that retrieves the length of the thought's reactions array field on query.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-Reaction (SCHEMA ONLY)
-
-reactionId
-
-Use Mongoose's ObjectId data type
-Default value is set to a new ObjectId
-reactionBody
-
-String
-Required
-280 character maximum
-username
-
-String
-Required
-createdAt
-
-Date
-Set default value to the current timestamp
-Use a getter method to format the timestamp on query
-Schema Settings
-
-This will not be a model, but rather will be used as the reaction field's subdocument schema in the Thought model.
-
-API Routes
-/api/users
-
-GET all users
-
-GET a single user by its \_id and populated thought and friend data
-
-POST a new user:
-
-// example data
-{
-"username": "lernantino",
-"email": "lernantino@gmail.com"
-}
-PUT to update a user by its \_id
-
-DELETE to remove user by its \_id
-
-BONUS: Remove a user's associated thoughts when deleted.
-
-/api/users/:userId/friends/:friendId
-
-POST to add a new friend to a user's friend list
-
-DELETE to remove a friend from a user's friend list
-
-/api/thoughts
-
-GET to get all thoughts
-
-GET to get a single thought by its \_id
-
-POST to create a new thought (don't forget to push the created thought's \_id to the associated user's thoughts array field)
-
-// example data
-{
-"thoughtText": "Here's a cool thought...",
-"username": "lernantino",
-"userId": "5edff358a0fcb779aa7b118b"
-}
-PUT to update a thought by its \_id
-
-DELETE to remove a thought by its \_id
-
-/api/thoughts/:thoughtId/reactions
-
-POST to create a reaction stored in a single thought's reactions array field
-
-DELETE to pull and remove a reaction by the reaction's reactionId value
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
