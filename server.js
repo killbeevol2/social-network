@@ -11,12 +11,19 @@ app.use(express.urlencoded({ extended: true }));
 const MONGODB_URI =
   process.env.MONGODB_URI || "mongodb://localhost/socialnetwork";
 const CONFIGS = {
-  useFindAndModify: false,
+  // useFindAndModify: false,
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  // useCreateIndex: true,
+  // debug: true,
 };
 
 mongoose.connect(MONGODB_URI, CONFIGS);
 
-mongoose.set("useCreatedIndex", true);
-mongoose.set("debug", true);
+const newUser = {
+  username: "test",
+  email: "test2@test.com",
+};
+db.User.create(newUser)
+  .then((data) => console.log(data))
+  .catch((e) => console.log(e));
