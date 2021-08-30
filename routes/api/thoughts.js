@@ -57,7 +57,7 @@ router.route("/:thoughtId/reactions").post((req, res) => {
   db.Thought.findOneAndUpdate(
     { _id: req.params.thoughtId },
     {
-      $set: {
+      $push: {
         reactions: req.body,
       },
     },
@@ -72,11 +72,13 @@ router.route("/:thoughtId/reactions").post((req, res) => {
 });
 
 router.route("/:thoughtId/reactions/:reactionId").delete((req, res) => {
-  db.Thought.findOneAndUpdate(
-    { _id: req.params.thoughtId },
+  db.Thought.findByIdAndUpdate(
+    req.params.thoughtId,
     {
       $pull: {
-        reactions: req.params.reactionId,
+        reactions: {
+          _id: req.params.reactionId,
+        },
       },
     },
     {
@@ -88,3 +90,5 @@ router.route("/:thoughtId/reactions/:reactionId").delete((req, res) => {
       res.json(e);
     });
 });
+
+module.exports = router;

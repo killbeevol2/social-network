@@ -43,7 +43,7 @@ router
   .put((req, res) => {
     const { username } = req.body;
     db.User.findOneAndUpdate(
-      req.params.id,
+      { _id: req.params.id },
       {
         username: username,
       },

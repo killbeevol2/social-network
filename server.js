@@ -20,26 +20,6 @@ const CONFIGS = {
 
 mongoose.connect(MONGODB_URI, CONFIGS);
 
-const newThought = {
-  thoughtText: "textThought",
-  username: "username",
-};
+app.use(require("./routes"));
 
-const newReaction = {
-  reactionBody: "reaction",
-  username: "username",
-};
-
-db.Thought.create(newThought).then((a) => {
-  db.Thought.findOneAndUpdate(
-    { _id: a._id },
-    {
-      $set: {
-        reactions: newReaction,
-      },
-    },
-    {
-      new: true,
-    }
-  ).then((b) => console.log(b));
-});
+app.listen(PORT, () => console.log(`Connected on localhost:${PORT}`));
