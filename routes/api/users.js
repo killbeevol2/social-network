@@ -88,3 +88,5 @@ router
       }
     ).then((user) => res.json(user));
   });
+
+module.exports = router;
