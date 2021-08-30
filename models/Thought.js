@@ -36,13 +36,51 @@ const ThoughtSchema = new Schema({
   reactions: [
     {
       type: "ObjectId",
-      ref: "reactionSchema",
+      ref: ReactionSchema,
     },
   ],
 });
 
 ThoughtSchema.virtual("thoughtCount").get(function () {
   return this.thoughts.length;
+});
+
+const ReactionSchema = new Schema({
+  reactionId: {
+    type: "ObjectId",
+    defaultValue: new Types.ObjectId(),
+  },
+  reactionBody: {
+    type: String,
+    required: true,
+    maxLength: 280,
+  },
+  username: {
+    type: String,
+    required: true,
+  },
+  createdAt: {
+    type: Date,
+    default: new Date(),
+    get: (now) => {
+      const month = now.getMonth();
+      const day = now.getDate();
+      const year = now.getFullYear();
+      let hour = now.getHours();
+      const minute = now.getMinutes();
+      let ampm;
+      if (hour > 12) {
+        ampm = "pm";
+        hour -= 12;
+      } else {
+        ampm = "am";
+      }
+
+      const timestamp = `${month}/${day}/${year} ${hour}:${minute}${ampm}`;
+
+      return timestamp;
+    },
+  },
 });
 
 const Thought = model("Thought", ThoughtSchema);
