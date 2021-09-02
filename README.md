@@ -28,7 +28,10 @@ After the application has been downloaded/copied, in your terminal you want to t
 
 ## Walkthrough
 
-[Walkthrough Video]()
+[Walkthrough Part 1](https://drive.google.com/file/d/1H_QiPRtbwjN1TWhlgDgt5FTbYwkVCNzj/view)<br>
+[Walkthrough Part 2](https://drive.google.com/file/d/1YdRXbiTWyZ6tqTNvGnABGfz2WyiPn6oW/view)<br>
+[Walkthrough Part 3](https://drive.google.com/file/d/1Iaue1-dqmxFElcCfGhSIHtoWC6qk2gzR/view)<br>
+[Walkthrough Part 4](https://drive.google.com/file/d/1D2emFwwE7bcfGf47fS1BVlJzOWFNkupr/view)<br>
 
 ## License
 
